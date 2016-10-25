@@ -39,6 +39,18 @@ ini_setting { 'random ordering':
 # specified in the console for that node.
 
 node default {
+
+ file { '/etc/motd':
+  ensure  => 'file',
+  content => 'Love Puppet',
+  ctime   => '2016-10-25 18:38:24 +0000',
+  group   => 'root',
+  mode    => '0644',
+  mtime   => '2016-10-25 18:38:24 +0000',
+  owner   => 'root',
+  type    => 'file',
+}
+
   # This is where you can declare classes for all nodes.
   # Example:
   #   class { 'my_class': }
