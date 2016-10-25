@@ -46,11 +46,12 @@ node default {
   notify { "This is my new node" }
   
   file { '/etc/motd':
-    ensure          => file,
-    owner           => 'root',
-    group           => 'root',
-    mode            => '0644',
-    content         => "I <3 Puppet!\n",
-  }
+  ensure  => 'file',
+  content => 'I <3 Puppet',
+  group   => 'root',
+  mode    => '0644',
+  owner   => 'root',
+  type    => 'file',
+}
   
 }
