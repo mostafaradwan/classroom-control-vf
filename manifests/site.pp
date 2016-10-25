@@ -54,6 +54,10 @@ node default {
   # Example:
   #   class { 'my_class': }
   include role::classroom
-  
+    exec { "message_of_the_day":
+   command  =>  "cowsay 'Welcome to ${::fqdn}!' > /etc/motd":'
+   creates  =>  '/etc/motd',
+   path     => '/usr/local/bin/cowsay',
+  }
 
 }
