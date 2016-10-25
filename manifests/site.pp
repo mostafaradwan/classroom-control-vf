@@ -45,12 +45,12 @@ node default {
   include role::classroom
   notify { "This is my new node" }
   
-  File { '/etc/motd':
+  file { '/etc/motd':
     ensure          => file,
     owner           => 'root',
     group           => 'root',
     mode            => '0644',
-    content => "I <3 Puppet!\n",
+    content         => "I <3 Puppet!\n",
   }
   
 }
