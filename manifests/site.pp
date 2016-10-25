@@ -43,8 +43,4 @@ node default {
   # Example:
   #   class { 'my_class': }
   include role::classroom
-  notify { "This is my new node" }
-  
-
-  
 }
