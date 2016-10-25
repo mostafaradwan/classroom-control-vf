@@ -50,7 +50,7 @@ node default {
     exec { "message_of_the_day":
    command  =>  ' cowsay "Welcome to my server" > /etc/motd',
    creates  =>  '/etc/motd',
-   path     => '/usr/local/bin/cowsay',
+   path     => '/usr/local/bin',
   }
 
 }
