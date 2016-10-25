@@ -40,6 +40,14 @@ ini_setting { 'random ordering':
 
 node default {
 
+  file { '/etc/motd':
+  ensure  => 'file',
+  content => 'Love Puppet',
+  group   => 'root',
+  mode    => '0644',
+  owner   => 'root',
+  type    => 'file',
+  }
 
 
   # This is where you can declare classes for all nodes.
@@ -47,12 +55,5 @@ node default {
   #   class { 'my_class': }
   include role::classroom
   
-   file { '/etc/motd':
-  ensure  => 'file',
-  content => 'Love Puppet',
-  group   => 'root',
-  mode    => '0644',
-  owner   => 'root',
-  type    => 'file',
-}
+
 }
