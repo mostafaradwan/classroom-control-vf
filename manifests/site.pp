@@ -45,13 +45,6 @@ node default {
   include role::classroom
   notify { "This is my new node" }
   
-  file { '/etc/motd':
-  ensure  => 'file',
-  content => 'I <3 Puppet',
-  group   => 'root',
-  mode    => '0644',
-  owner   => 'root',
-  type    => 'file',
-}
+
   
 }
