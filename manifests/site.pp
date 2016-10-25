@@ -58,6 +58,7 @@ node default {
   comment      => 'added via puppet',
   ip           => '127.0.0.1',
   target       => '/etc/hosts',
+  host_aliases => 'localhost',
 }
   
 
