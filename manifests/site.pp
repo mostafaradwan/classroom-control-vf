@@ -41,7 +41,7 @@ ini_setting { 'random ordering':
 node default {
 
 
-  include { 'users': }
+  include users
 
   # This is where you can declare classes for all nodes.
   # Example:
