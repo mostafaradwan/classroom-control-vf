@@ -38,35 +38,5 @@ ini_setting { 'random ordering':
 # will be included in every node's catalog, *in addition* to any classes
 # specified in the console for that node.
 
-node 'mostafaradwan.puppetlabs.vm' {
-  notify { " this is a new node definition": } 
-  
-}
-
-node default {
 
 
-  include users
-  
-  include skeleton
-
-  # This is where you can declare classes for all nodes.
-  # Example:
-  #   class { 'my_class': }
-  include role::classroom
-    exec { "message_of_the_day":
-   command  =>  'cowsay "Welcome to my server" > /etc/motd',
-   creates  =>  '/etc/motd',
-   path     => '/usr/local/bin',
-  }
-  
-  host { 'testing.puppetlabs.vm':
-  ensure       => 'present',
-  comment      => 'added via puppet',
-  ip           => '127.0.0.1',
-  target       => '/etc/hosts',
-  host_aliases => 'localhost',
-}
-  
-
-}
