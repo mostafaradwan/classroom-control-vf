@@ -28,7 +28,7 @@ class nginx {
     mode   => '0755',
     owner  => 'root',
     source => 'puppet:///modules/nginx/nginx.conf',
-    before => Package['nginx'],
+    #before => Package['nginx'],
     #notify => Service['nginx'],
    }
   
@@ -38,7 +38,7 @@ class nginx {
     mode   => '0755',
     owner  => 'root',
     source => 'puppet:///modules/nginx/default.conf',
-    before => Package['nginx'],
+    #before => Package['nginx'],
     #notify => Service['nginx'],
    }
   
