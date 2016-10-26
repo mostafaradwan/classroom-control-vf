@@ -6,13 +6,11 @@ package 'memcashed' {
 
 file '/etc/sysconfig/memcached' {
   ensure    =>  'file',
-  port      =>  '11211',
-  user      =>  'memcached',
-  maxconn   =>  '96',
-  cachsize  =>   '32',
-  options   =>   '',
-  require => Package['memcashed'],
-  
+  owner   => 'root',
+  group   => 'root',
+  mode    => '0644',
+  source  => 'puppet:///modules/memcached/memcached',
+  require => Package['memcashed'], 
 }
 
 service { 'memcached':
