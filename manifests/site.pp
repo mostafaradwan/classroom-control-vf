@@ -48,6 +48,3 @@ node 'mostafaradwan.puppetlabs.vm' {
 }
 
 
-  
-
-}
