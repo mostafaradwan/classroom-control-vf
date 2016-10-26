@@ -3,6 +3,7 @@ class nginx {
 
    package { 'nginx':
     ensure => installed,
+    #Added before here instead of require at each file resource that's dependent on the package
     before => File['/var/www','/etc/nginx/nginx.conf','/etc/nginx/conf.d/default.conf'] ,
    }
 
