@@ -10,7 +10,7 @@ class nginx {
     group  => 'root',
     mode   => '0755',
     owner  => 'root',
-    #before => Package['nginx'],
+    before => Package['nginx'],
    }
 
    file { '/var/www/index.html':
@@ -19,7 +19,7 @@ class nginx {
     mode   => '0755',
     owner  => 'root',
     source => 'puppet:///modules/nginx/index.html',
-    #before => File['/var/www'],
+    before => File['/var/www'],
    }
 
    file { '/etc/nginx/nginx.conf':
@@ -28,7 +28,7 @@ class nginx {
     mode   => '0755',
     owner  => 'root',
     source => 'puppet:///modules/nginx/nginx.conf',
-    #before => Package['nginx'],
+    before => File['/etc/nginx/'],
     #notify => Service['nginx'],
    }
   
@@ -38,7 +38,7 @@ class nginx {
     mode   => '0755',
     owner  => 'root',
     source => 'puppet:///modules/nginx/default.conf',
-    #before => Package['nginx'],
+    before => File['/etc/nginx/'],
     #notify => Service['nginx'],
    }
   
@@ -49,6 +49,6 @@ class nginx {
    }
    
  
-  Package['nginx'] -> File ['/var/www'] -> File ['/etc/nginx/nginx.conf'] ->  File ['/etc/nginx/conf.d/default.conf'] -> Service['nginx'] 
+  #Package['nginx'] -> File ['/var/www'] -> File ['/etc/nginx/nginx.conf'] ->  File ['/etc/nginx/conf.d/default.conf'] -> Service['nginx'] 
   
 }
