@@ -47,28 +47,7 @@ node 'mostafaradwan.puppetlabs.vm' {
   
 }
 
-node default {
 
-
- 
-
-  # This is where you can declare classes for all nodes.
-  # Example:
-  #   class { 'my_class': }
-  include role::classroom
-    exec { "message_of_the_day":
-   command  =>  'cowsay "Welcome to my server" > /etc/motd',
-   creates  =>  '/etc/motd',
-   path     => '/usr/local/bin',
-  }
-  
-  host { 'testing.puppetlabs.vm':
-  ensure       => 'present',
-  comment      => 'added via puppet',
-  ip           => '127.0.0.1',
-  target       => '/etc/hosts',
-  host_aliases => 'localhost',
-}
   
 
 }
