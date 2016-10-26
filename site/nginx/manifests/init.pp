@@ -6,29 +6,30 @@ class nginx {
    }
 
    file { '/var/www':
-    ensure => 'directory',
-    group  => 'root',
-    mode   => '0755',
-    owner  => 'root',
-    before => Package['nginx'],
+    ensure   => 'directory',
+    group    => 'root',
+    mode     => '0755',
+    owner    => 'root',
+    require  => Package['nginx'],
    }
 
    file { '/var/www/index.html':
-    ensure => 'file',
-    group  => 'root',
-    mode   => '0755',
-    owner  => 'root',
-    source => 'puppet:///modules/nginx/index.html',
-    before => File['/var/www'],
+    ensure   => 'file',
+    group    => 'root',
+    mode     => '0755',
+    owner    => 'root',
+    source   => 'puppet:///modules/nginx/index.html',
+    #require  => File['/var/www'],
    }
 
    file { '/etc/nginx/nginx.conf':
-    ensure => 'file',
-    group  => 'root',
-    mode   => '0755',
-    owner  => 'root',
-    source => 'puppet:///modules/nginx/nginx.conf',
-    before => File['/etc/nginx/'],
+    ensure   => 'file',
+    group    => 'root',
+    mode     => '0755',
+    owner    => 'root',
+    source   => 'puppet:///modules/nginx/nginx.conf',
+    require  => Package['nginx'],
+    #before => File['/etc/nginx/'],
     #notify => Service['nginx'],
    }
   
@@ -38,7 +39,8 @@ class nginx {
     mode   => '0755',
     owner  => 'root',
     source => 'puppet:///modules/nginx/default.conf',
-    before => File['/etc/nginx/conf.d'],
+    require  => Package['nginx'],
+    #before => File['/etc/nginx/conf.d'],
     #notify => Service['nginx'],
    }
   
