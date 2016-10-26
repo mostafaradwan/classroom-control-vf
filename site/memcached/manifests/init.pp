@@ -1,6 +1,8 @@
 #memcached/manifests/init.pp
-package 'memcashed' {
-  ensure  => 'installed'
+class memcached  { 
+
+package 'memcached' {
+  ensure  => 'present'
 
 }
 
@@ -10,11 +12,13 @@ file '/etc/sysconfig/memcached' {
   group   => 'root',
   mode    => '0644',
   source  => 'puppet:///modules/memcached/memcached',
-  require => Package['memcashed'], 
+  require => Package['memcached'], 
 }
 
 service { 'memcached':
   ensure    => running,
   enable    => true,
   subscribe => File['/etc/sysconfig/memcached'],
+}
+
 }
