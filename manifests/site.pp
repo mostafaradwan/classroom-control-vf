@@ -44,6 +44,7 @@ node 'mostafaradwan.puppetlabs.vm' {
   include users
   include skeleton
   include memcached
+  include nginx
   
 }
 
