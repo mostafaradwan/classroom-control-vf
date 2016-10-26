@@ -40,15 +40,17 @@ ini_setting { 'random ordering':
 
 node 'mostafaradwan.puppetlabs.vm' {
   notify { " this is a new node definition": } 
+ 
+  include users
+  include skeleton
+  include memcached
   
 }
 
 node default {
 
 
-  include users
-  include skeleton
-  include memcached
+ 
 
   # This is where you can declare classes for all nodes.
   # Example:
