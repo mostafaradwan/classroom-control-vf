@@ -7,6 +7,7 @@ file { '/etc/skel/':
   group  => 'root',
   mode   => '0755',
   owner  => 'root',
+  # type   => 'file', is ready-only and we can't use it 
 }
 
 file { '/etc/skel/.bashrc':
