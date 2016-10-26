@@ -39,8 +39,8 @@ ini_setting { 'random ordering':
 # specified in the console for that node.
 
 node 'mostafaradwan.puppetlabs.vm' {
-  notify { " this is a new node definition" } 
- 
+  notify { " this is a new node definition": } 
+  
 }
 
 node default {
