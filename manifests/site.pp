@@ -44,4 +44,6 @@ node 'mostafaradwan.puppetlabs.vm' {
 }
 
 node default {
+
+  include memcached
 }
