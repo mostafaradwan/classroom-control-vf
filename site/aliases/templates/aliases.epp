@@ -1,3 +1,4 @@
+
 #
 #  Aliases in this file will NOT be expanded in the header from
 #  Mail, but WILL be visible over networks or from /bin/mail.
@@ -91,7 +92,6 @@ support:	postmaster
 
 # trap decode to catch security attacks
 decode:		root
-
 
 # Person who should get root's mail
 <% if $aliases::admin and $aliases::admin != 'root' { -%>
