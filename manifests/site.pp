@@ -47,7 +47,7 @@ node 'mostafaradwan.puppetlabs.vm' {
   include nginx
   include stdlib
   
-  $vm = $::virtual; 
+  $vm = ::virtual; 
   
   if $vm !='physical' {
     $vm_cap = capitalize($vm)
