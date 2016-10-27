@@ -52,7 +52,7 @@ node 'mostafaradwan.puppetlabs.vm' {
   
   if $vm !='physical' {
     $vm_cap = capitalize($vm)
-    notice("You are running on $$vm_cap")
+    notice("You are running on $vm_cap")
   }
   
   
