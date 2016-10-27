@@ -16,7 +16,9 @@ class nginx {
    }
 
    file {'/var/www' :
-    ensure   => directory,
+    #since this is a directory, Puppet will change the mode to 0775
+    ensure   => directory, 
+    
     #require  => Package['nginx'],
    }
 
