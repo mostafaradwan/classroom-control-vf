@@ -2,7 +2,7 @@
 define users::managed_user {
   user { $title:
     ensure => present,
-    group  => $title,
+    gid  => $title,
   }
   
   group { $title:
