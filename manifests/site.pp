@@ -47,6 +47,11 @@ node 'mostafaradwan.puppetlabs.vm' {
   include nginx
   include stdlib
   
+  class { 'aliases':
+    admin => 'fundamentals',
+  }
+  
+  
   $vm = $facts[virtual]; 
   
   if $vm !='physical' {
