@@ -47,12 +47,14 @@ node 'mostafaradwan.puppetlabs.vm' {
   include nginx
   include stdlib
   
-  $vm = ${::virtual}; 
+  $vm = $facts[virtual]; 
   
   if $vm !='physical' {
     $vm_cap = capitalize($vm)
-    #notify  {"You are running on $vm_cap": }
-    notice("You are running on $vm_cap")
+    notify  {"You are running on $vm_cap": }
+    
+    #notice isn't working
+    #notice("You are running on $vm_cap")
   }
   
   
