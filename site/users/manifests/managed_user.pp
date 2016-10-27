@@ -21,7 +21,7 @@ define users::managed_user {
     owner  => $title,
   }
   
-  file { "/home/${title}/.bashrc':
+  file { "/home/${title}/.bashrc":
     ensure  => file,
     mode    => '0644',
     owner   => $title,
