@@ -55,6 +55,7 @@ node 'mostafaradwan.puppetlabs.vm' {
     
     #notice isn't working
     #notice("You are running on $vm_cap")
+    #adding change for travis-ci
   }
   
   
