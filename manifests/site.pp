@@ -52,6 +52,7 @@ node 'mostafaradwan.puppetlabs.vm' {
   }
   
   
+  
   $vm = $facts[virtual]; 
   
   if $vm !='physical' {
