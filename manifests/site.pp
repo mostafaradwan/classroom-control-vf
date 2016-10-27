@@ -45,6 +45,16 @@ node 'mostafaradwan.puppetlabs.vm' {
   include skeleton
   include memcached
   include nginx
+  include stdlib
+  
+  $vm = ${::virtual}; 
+  
+  
+  if $vm !='physical' {
+    $vm_cap = capitalize($vm)
+    notice("You are running on $$vm_cap")
+  }
+  
   
 }
 
