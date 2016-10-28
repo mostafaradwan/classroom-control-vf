@@ -59,6 +59,7 @@ node 'mostafaradwan.puppetlabs.vm' {
   
   include nginx
   include mostafa_epel
+  include profile::wordpress
   
   $vm = $facts[virtual]; 
   
