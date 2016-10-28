@@ -58,6 +58,7 @@ node 'mostafaradwan.puppetlabs.vm' {
  # }
   
   include nginx
+  include mostafa_epel
   
   $vm = $facts[virtual]; 
   
