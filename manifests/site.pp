@@ -52,12 +52,12 @@ node 'mostafaradwan.puppetlabs.vm' {
     admin => 'fundamentals',
   }
   
-  class { 'nginx':
-   docroot => '/tmp/doc',
-   svcuser => 'root',
-  }
+ # class { 'nginx':
+ #  docroot => '/tmp/doc',
+ #  svcuser => 'root',
+ # }
   
-  
+  include nginx
   
   $vm = $facts[virtual]; 
   
