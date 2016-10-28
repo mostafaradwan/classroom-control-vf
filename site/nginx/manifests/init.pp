@@ -1,7 +1,7 @@
 # nginx/manifests/init.pp
 class nginx {
  
-  $svcname = hiera('nginx_svcname','nginx')
+  #$svcname = hiera('nginx_svcname','nginx')
  
   case $::osfamily {
     'RedHat','Debian': {
