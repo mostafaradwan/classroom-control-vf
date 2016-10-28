@@ -62,7 +62,7 @@ node 'mostafaradwan.puppetlabs.vm' {
     
     $hieravar = hiera('message')
     
-     notify { "$hieravar" :} 
+    # notify { "$hieravar" :} 
     
     #notice isn't working
     #notice("You are running on $vm_cap")
