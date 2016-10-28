@@ -9,7 +9,7 @@ class nginx (
     $filegrp = $nginx::params::filegrp,
     $svcname = $nginx::params::svcname,
     $svcuser = $nginx::params::svcuser,
-) {
+) inherits nginx::params  {
   
   File {
     ensure => file,
@@ -46,6 +46,4 @@ class nginx (
   }
 }
 
-    Contact GitHub API Training Shop Blog About 
-
-    © 2016 GitHub, Inc. Terms Privacy Security Status Hel
+ 
