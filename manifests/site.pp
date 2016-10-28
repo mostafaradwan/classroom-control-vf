@@ -65,6 +65,8 @@ node 'mostafaradwan.puppetlabs.vm' {
     #adding change for travis-ci
   }
   
+  notify { hiera('message') } 
+  
   
 }
 
