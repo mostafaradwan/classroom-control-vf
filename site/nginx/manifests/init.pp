@@ -7,12 +7,20 @@ class nginx {
       $logsdir = '/var/log/nginx'
       $confdir = '/etc/nginx'
       $blckdir = '/etc/nginx/conf.d'
+      $pkgname = 'nginx'
+      $fileown = 'root'
+      $filegrp = 'root'
+      $svcname = 'nginx'
     }
     'windows': {
       $docroot = 'C:/ProgramData/nginx/html'
       $logsdir = 'C:/ProgramData/nginx/logs'
       $confdir = 'C:/ProgramData/nginx'
       $blckdir = 'C:/ProgramData/nginx/conf.d'
+      $pkgname = 'nginx-service'
+      $fileown = 'Administrator'
+      $filegrp = 'Administrators'
+      $svcname = 'nginx'
     }
   }
  
@@ -24,12 +32,12 @@ class nginx {
   
   File {
     ensure => file,
-    owner  => 'root',
-    group  => 'root',
+    owner  => $fileown,
+    group  => $filegrp,
     mode   => '0644',
   }
 
-  package { 'nginx':
+  package { $pkgname:
     ensure => present,
     before => [File["${blckdir}/default.conf"],File["${confdir}/nginx.conf"]],
   }
@@ -50,7 +58,7 @@ class nginx {
     content  => epp('nginx/nginx.conf.epp'),
 }
     
-  service { 'nginx':
+  service { $svcname:
     ensure    => running,
     enable    => true,
     subscribe => [File["${blckdir}/default.conf"],File["${confdir}/nginx.conf"]],
