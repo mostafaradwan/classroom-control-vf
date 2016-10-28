@@ -1,11 +1,11 @@
 # nginx/manifests/init.pp
-class nginx {
+class nginx ($param = '/var/www',) {
  
   #$svcname = hiera('nginx_svcname','nginx')
  
   case $::osfamily {
     'RedHat','Debian': {
-      $docroot = '/var/www'
+      $docroot = $docrootparam #'/var/www'
       $logsdir = '/var/log/nginx'
       $confdir = '/etc/nginx'
       $blckdir = '/etc/nginx/conf.d'
@@ -15,7 +15,7 @@ class nginx {
       $svcname = 'nginx'
     }
     'windows': {
-      $docroot = 'C:/ProgramData/nginx/html'
+      $docroot = $docrootparam# 'C:/ProgramData/nginx/html'
       $logsdir = 'C:/ProgramData/nginx/logs'
       $confdir = 'C:/ProgramData/nginx'
       $blckdir = 'C:/ProgramData/nginx/conf.d'
