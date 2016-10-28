@@ -33,5 +33,5 @@ class nginx::params {
   }
 }
 
-    Contact GitHub API Training Shop Blog About 
+   
 
