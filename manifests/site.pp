@@ -44,12 +44,16 @@ node 'mostafaradwan.puppetlabs.vm' {
   include users
   include skeleton
   include memcached
-  include nginx
+  #include nginx
   include stdlib
   include users::admins
   
   class { 'aliases':
     admin => 'fundamentals',
+  }
+  
+  class { 'nginx':
+    root => '/tmp/www',
   }
   
   
@@ -70,8 +74,7 @@ node 'mostafaradwan.puppetlabs.vm' {
   }
   
  
-  
-  
+ 
 }
 
 
