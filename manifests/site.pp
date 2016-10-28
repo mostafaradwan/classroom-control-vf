@@ -60,12 +60,14 @@ node 'mostafaradwan.puppetlabs.vm' {
     $vm_cap = capitalize($vm)
     notify  {"You are running on $vm_cap": }
     
+     notify { hiera('message') } 
+    
     #notice isn't working
     #notice("You are running on $vm_cap")
     #adding change for travis-ci
   }
   
-  notify { hiera('message') } 
+ 
   
   
 }
