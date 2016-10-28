@@ -1,10 +1,9 @@
-#nginx/manifests/params.pp
-
+# nginx/manifests/params.pp
 class nginx::params {
 
- case $::osfamily {
+  case $::osfamily {
     'RedHat','Debian': {
-#      $docroot = '/var/www'
+      $docroot = '/var/www'
       $logsdir = '/var/log/nginx'
       $confdir = '/etc/nginx'
       $blckdir = '/etc/nginx/conf.d'
@@ -15,7 +14,7 @@ class nginx::params {
       $default_docroot = '/var/www'
     }
     'windows': {
-#      $docroot = 'C:/ProgramData/nginx/html'
+      $docroot = 'C:/ProgramData/nginx/html'
       $logsdir = 'C:/ProgramData/nginx/logs'
       $confdir = 'C:/ProgramData/nginx'
       $blckdir = 'C:/ProgramData/nginx/conf.d'
@@ -32,5 +31,7 @@ class nginx::params {
     'Debian'  => 'www-data',
     'windows' => 'nobody',
   }
-  
- }
+}
+
+    Contact GitHub API Training Shop Blog About 
+
