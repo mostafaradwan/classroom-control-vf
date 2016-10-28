@@ -53,8 +53,8 @@ node 'mostafaradwan.puppetlabs.vm' {
   }
   
   class { 'nginx':
-   docroot = '/tmp/doc',
-   svcuser = 'root',
+   docroot => '/tmp/doc',
+   svcuser => 'root',
   }
   
   
