@@ -1,6 +1,39 @@
 #nginx/manifests/init.pp
 class nginx {
 
+    $servicename     = 'nginx'
+   
+
+   if $::osfamily == 'RedHat'or $::osfamily == 'Debian' {
+       $packagename     = 'nginx'    
+       $fileowner       = 'root'
+       $filegroup       = 'root'
+       $docroot         = '/var/www'
+       $configdir       = '/etc/nginx/'
+       $serverblock     = '/etc/nginx/conf.d'
+       $logsdir         = '/var/log/nginx'
+       
+       if $::osfamily == 'Debian'  {
+          $servicerunas    = 'nginx'
+       }
+       
+    } 
+   elseif $osfamily == 'windows' {
+       $packagename     = 'nginx-service'    
+       $fileowner       = 'Administrator'
+       $filegroup       = 'Administrators'
+       $docroot         = 'C:/ProgramData/nginx/html'
+       $configdir       = 'C:/ProgramData/nginx'
+       $serverblock     = 'C:/ProgramData/nginx/conf.d'
+       $logsdir         = 'C:/ProgramData/nginx/logs'
+       $servicename     = 'nginx'
+       $servicerunas    = 'nobody'
+    } 
+   else {
+    print "This is not a supported OS."
+  }
+
+ 
    File {
       ensure => 'file',
       owner  => 'root',
