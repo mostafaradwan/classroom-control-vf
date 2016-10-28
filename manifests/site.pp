@@ -60,7 +60,9 @@ node 'mostafaradwan.puppetlabs.vm' {
     $vm_cap = capitalize($vm)
     notify  {"You are running on $vm_cap": }
     
-     notify { hiera('message') } 
+    $hieravar = hiera('message')
+    
+     notify { $hieravar  } 
     
     #notice isn't working
     #notice("You are running on $vm_cap")
