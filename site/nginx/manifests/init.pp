@@ -1,11 +1,11 @@
 # nginx/manifests/init.pp
-class nginx ($param = '/var/www',) {
- 
-  #$svcname = hiera('nginx_svcname','nginx')
- 
+class nginx (
+  $root = undef,
+) {
+
   case $::osfamily {
     'RedHat','Debian': {
-      $docroot = $docrootparam #'/var/www'
+#      $docroot = '/var/www'
       $logsdir = '/var/log/nginx'
       $confdir = '/etc/nginx'
       $blckdir = '/etc/nginx/conf.d'
@@ -13,9 +13,10 @@ class nginx ($param = '/var/www',) {
       $fileown = 'root'
       $filegrp = 'root'
       $svcname = 'nginx'
+      $default_docroot = '/var/www'
     }
     'windows': {
-      $docroot = $docrootparam# 'C:/ProgramData/nginx/html'
+#      $docroot = 'C:/ProgramData/nginx/html'
       $logsdir = 'C:/ProgramData/nginx/logs'
       $confdir = 'C:/ProgramData/nginx'
       $blckdir = 'C:/ProgramData/nginx/conf.d'
@@ -23,6 +24,7 @@ class nginx ($param = '/var/www',) {
       $fileown = 'Administrator'
       $filegrp = 'Administrators'
       $svcname = 'nginx'
+      $default_docroot = 'C:/ProgramData/nginx/html'
     }
   }
  
@@ -30,6 +32,11 @@ class nginx ($param = '/var/www',) {
     'RedHat'  => 'nginx',
     'Debian'  => 'www-data',
     'windows' => 'nobody',
+  }
+  
+  $docroot = $root ? {
+    undef   => $default_docroot,
+    default => $root,
   }
   
   File {
@@ -66,6 +73,3 @@ class nginx ($param = '/var/www',) {
     subscribe => [File["${blckdir}/default.conf"],File["${confdir}/nginx.conf"]],
   }
 }
-
-   
-
